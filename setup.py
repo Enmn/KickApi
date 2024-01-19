@@ -6,7 +6,7 @@ with open('README.md', 'r') as f:
 setup(
     name='KickApi',
     description='A Python package for interacting with the Kick API to retrieve channel and video data.',
-    version='0.3.1',
+    version='0.3.2',
     packages=find_packages(),
     install_requires=[
         'requests',

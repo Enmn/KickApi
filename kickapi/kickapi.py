@@ -2,6 +2,7 @@
 import requests
 from kickapi.channel_data import ChannelData
 from kickapi.video_data import VideoData
+from kickapi.chat_data import ChatData
 
 class KickAPI:
     def __init__(self):
@@ -33,6 +34,17 @@ class KickAPI:
         try:
             data = response.json()
             return VideoData(data)
+        except ValueError:
+            print("Failed to parse JSON response.")
+            return None
+        
+    def chat(self, channel_id, datetime):
+        # Get chat data by channel id
+        url = f"https://kick.com/api/v2/channels/{channel_id}/messages?start_time={datetime}"
+        response = self.session.get(url, headers=self.headers)
+        try:
+            data = response.json()
+            return ChatData(data)
         except ValueError:
             print("Failed to parse JSON response.")
             return None
