@@ -38,7 +38,7 @@ from kickapi import KickAPI
 kick_api = KickAPI()
 
 # Fetch video data by video ID
-video = kick_api.video("video_id")
+video = kick_api.video('video_id')
 
 # Access video attributes
 print("Video ID:", video.id)
@@ -88,7 +88,7 @@ import time
 kick_api = KickAPI()
 
 # Fetch video data
-video = kick_api.video('b8cdb750-a957-4636-b0f8-9c8c41dd2f7c')
+video = kick_api.video('video_id')
 
 while True:
     # Convert to datetime object and format in the desired way
