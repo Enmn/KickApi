@@ -14,7 +14,7 @@ class VideoData:
         self.start_time = get_value("created_at")
         self.created_at = data.get("created_at")
         self.updated_at = data.get("updated_at")
-        self.uuid = data.get("uuid")
+        self.uuid = data.get("uuid", data.get("video", {}).get("uuid"))
         self.views = data.get("views")
         self.language = get_value("language")
         self.stream = data.get("source")
