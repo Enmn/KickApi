@@ -9,6 +9,7 @@ pip install KickApi
 
 ## Usage
 Integrate the KickApi into your Python project with ease:
+
 ### Fetch Channel Data
 The KickAPI package allows you to fetch detailed information about a Kick channel effortlessly. The example code below demonstrates how to use KickAPI to retrieve and display channel data.
 ```python
@@ -51,11 +52,105 @@ print("Updated At:", video.updated_at)
 print("UUID:", video.uuid)
 print("Views:", video.views)
 print("Language:", video.language)
-print("Stream Video URL:", video.strem_video)
+print("Stream Video URL:", video.stream)
 
 # Access channel data associated with the video
 print("Channel ID:", video.channel.id)
 print("Channel Username:", video.channel.username)
+```
+You can also view the channel's videos through the username.
+```python
+from kickapi import KickAPI
+
+# Create an instance of KickAPI
+kick_api = KickAPI()
+
+# Fetch channel data using username
+channel = kick_api.channel("username")
+
+# Fetch and print videos associated with the channel
+print("Channel Videos:")
+for video in channel.videos:
+    print(f"Title: {video.title}")
+    print(f"Duration: {video.duration}")
+    print(f"Views: {video.views}")
+    print(f"Stream URL: {video.stream}")
+    print("-" * 30)
+```
+
+### Fetch Clip Data
+Retrieve detailed information about a specific clip using its unique clip ID. This is useful when you already have a clip ID and want to display or analyze its metadata.
+```python
+from kickapi import KickAPI
+
+# Create an instance of KickAPI
+kick_api = KickAPI()
+
+# Fetch clip data using KickAPI
+clip = kick_api.clip("clip_id")
+
+# Display clip information
+print("🎞 Clip Information")
+print(f"Title: {clip.title}")
+print(f"Clip ID: {clip.id}")
+print(f"Created At: {clip.created_at}")
+print(f"Thumbnail: {clip.thumbnail}")
+print(f"Duration: {clip.duration}")
+print(f"Stream URL: {clip.stream}")
+
+# Optional: Show creator details if available
+if clip.creator:
+    print(f"Created By: {clip.creator.username}")
+    print(f"Creator Category: {clip.category.name}")
+```
+You can access the clips from a channel, including metadata like title, creator, and category.
+```python
+from kickapi import KickAPI
+
+# Create an instance of KickAPI
+kick_api = KickAPI()
+
+# Fetch channel data using username
+channel = kick_api.channel("username")
+
+# Fetch and print clips associated with the channel
+print("Channel Clips:")
+for clip in channel.clips:
+    print(f"Title: {clip.title}")
+    print(f"Clip ID: {clip.id}")
+    print(f"Created By: {clip.creator.username}")
+    print(f"Category: {clip.category.name}")
+    print("-" * 30)
+```
+
+### Fetch Channel Leaderboards
+Display leaderboard data for a Kick channel, including top gifters of all time, this week, and this month.
+```python
+from kickapi import KickAPI
+
+# Create an instance of KickAPI
+kick_api = KickAPI()
+
+# Fetch channel data using username
+channel = kick_api.channel("username")
+
+# Fetch leaderboard data
+leaderboard = channel.leaderboards
+
+# Gifts leaderboard
+print("🎁 Gifts Leaderboard:")
+for user in leaderboard.gifts:
+    print(f"{user.username} - {user.quantity} gifts")
+
+# Weekly leaderboard
+print("\n📅 Weekly Gifts Leaderboard:")
+for user in leaderboard.gifts_week:
+    print(f"{user.username} - {user.quantity} gifts")
+
+# Monthly leaderboard
+print("\n🗓 Monthly Gifts Leaderboard:")
+for user in leaderboard.gifts_month:
+    print(f"{user.username} - {user.quantity} gifts")
 ```
 
 ### Fetch Chat Data
@@ -134,9 +229,30 @@ else:
 ```
 
 ## Features
-- **Channel Insights** Obtain a detailed snapshot of Kick channels effortlessly. Retrieve essential information such as channel ID, bio, avatar URL, followers count, and playback URL.</br>
-- **Video Analytics** Dive deep into Kick videos with a wealth of data at your fingertips. Retrieve details including video title, thumbnail URL, duration, live stream ID, creation and update timestamps, UUID, views count, language, stream video URL, and associated channel details.</br>
-- **Chat Integration** Stay connected with Kick chat functionality. Retrieve and interact with chat messages, including sender details, message content, and timestamps.
+
+- **Channel Insights**  
+  Obtain a detailed snapshot of Kick channels effortlessly. Retrieve essential information such as channel ID, bio, avatar URL, followers count, and playback URL.
+
+- **Video Analytics**  
+  Dive deep into Kick videos with a wealth of data at your fingertips. Retrieve details including video title, thumbnail URL, duration, live stream ID, creation and update timestamps, UUID, views count, language, stream video URL, and associated channel details.
+
+- **Clip Access**  
+  Fetch clips by channel or by clip ID. Each clip includes metadata such as clip ID, title, thumbnail, creation time, duration, and creator details.
+
+- **Leaderboard Integration**  
+  Retrieve leaderboard data for channels, including top contributors by gifts. Access weekly, monthly, and all-time leaderboards with structured user information (ID, username, quantity).
+
+- **Category & Language Support**  
+  Explore video and stream categories as well as available languages for better content filtering and organization.
+
+- **Dynamic Data Handling**  
+  The API is smartly designed to pull values either from livestream data or fallback to main video/channel data if necessary, ensuring robustness even with partial responses.
+
+- **Chat Integration**  
+  Stay connected with Kick chat functionality. Retrieve and interact with chat messages, including sender details, message content, and timestamps.
+
+- **Live Chat Tracking**  
+  Monitor real-time chat activity in a livestream by continuously polling messages using the video's start time.
 
 ## Contributing
 We welcome contributions from the community! If you'd like to contribute to the development of KickApi, please follow these guidelines:

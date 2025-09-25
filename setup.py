@@ -6,13 +6,25 @@ with open('README.md', 'r') as f:
 setup(
     name='KickApi',
     description='A Python package for interacting with the Kick API to retrieve channel and video data.',
-    version='0.3.2',
+    version='0.3.5',
     packages=find_packages(),
     install_requires=[
-        'requests',
+        'cloudscraper',
+        'ua-generator'
     ],
     license="MIT",
-    keywords=['kick', 'api', 'kickapi'],
+    keywords=[
+        'kick', 
+        'api', 
+        'kickapi',
+        'live streaming',
+        'kick.com',
+        'video api',
+        'streaming platform',
+        'python kick sdk',
+        'kick bot',
+        'kick integration'
+    ],
     long_description=long_description,
     long_description_content_type='text/markdown', 
     author='Enmn',
