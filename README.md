@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://i.ibb.co/1Yrk5xQP/kickapi.png" alt="Kick API Logo" width="100"/>
+</p>
+
 # Kick API for Python
 The `KickApi` Python package is your gateway to seamless integration with the Kick API, providing a robust and user-friendly interface for retrieving comprehensive channel and video data. Empowering developers to harness the full potential of Kick's capabilities, this package simplifies data retrieval, enabling a wide range of applications from content analysis to user interaction.
 
