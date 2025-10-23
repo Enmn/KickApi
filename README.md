@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://i.ibb.co/1Yrk5xQP/kickapi.png" alt="Kick API Logo" width="100"/>
+  <img src="logo.png" alt="Kick API Logo" width="100"/>
 </p>
 
 # Kick API for Python
