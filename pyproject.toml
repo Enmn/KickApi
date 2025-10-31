@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "KickApi"
-version = "0.3.6"
+version = "0.3.7"
 description = "A Python package for interacting with the Kick API to retrieve channel and video data."
 readme = "README.md"
 license = "MIT"
