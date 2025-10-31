@@ -3,19 +3,44 @@
 </p>
 
 # Kick API for Python
+
 The `KickApi` Python package is your gateway to seamless integration with the Kick API, providing a robust and user-friendly interface for retrieving comprehensive channel and video data. Empowering developers to harness the full potential of Kick's capabilities, this package simplifies data retrieval, enabling a wide range of applications from content analysis to user interaction.
 
 ## Installation
+
 Getting started is a breeze. Install the KickApi package with a single command
+
 ```bash
 pip install KickApi
 ```
 
+### Using uv (optional, recommended)
+
+If you prefer a fast, reproducible workflow with an isolated virtual environment, you can use uv.
+
+- Install uv: see the [installation guide](https://docs.astral.sh/uv/getting-started/installation/).
+- From the project root, create/sync the environment and install deps: `uv sync`
+- Run your code inside the environment: `uv run python -c "import kickapi; print('OK')"`
+- Build distributions (wheel/sdist): `uv build`
+
+uv reads `pyproject.toml` for project metadata and dependencies and manages a local virtual environment automatically.
+
+## Packaging
+
+This project has fully migrated to `pyproject.toml` (PEP 621) with setuptools as the backend (PEP 517).
+
+- Build distributions: `uv build`
+- Sync environment for development: `uv sync`
+- Install from source (PEP 517): `pip install .`
+
 ## Usage
+
 Integrate the KickApi into your Python project with ease:
 
 ### Fetch Channel Data
+
 The KickAPI package allows you to fetch detailed information about a Kick channel effortlessly. The example code below demonstrates how to use KickAPI to retrieve and display channel data.
+
 ```python
 from kickapi import KickAPI
 
@@ -35,7 +60,9 @@ print("Playback URL:", channel.playback)
 ```
 
 ### Fetch Video Data
+
 To obtain insights into Kick videos, including details such as title, thumbnail URL, duration, and more, you can use KickAPI to fetch video data. The example code below demonstrates how to retrieve and display video details.
+
 ```python
 from kickapi import KickAPI
 
@@ -62,7 +89,9 @@ print("Stream Video URL:", video.stream)
 print("Channel ID:", video.channel.id)
 print("Channel Username:", video.channel.username)
 ```
+
 You can also view the channel's videos through the username.
+
 ```python
 from kickapi import KickAPI
 
@@ -83,7 +112,9 @@ for video in channel.videos:
 ```
 
 ### Fetch Clip Data
+
 Retrieve detailed information about a specific clip using its unique clip ID. This is useful when you already have a clip ID and want to display or analyze its metadata.
+
 ```python
 from kickapi import KickAPI
 
@@ -107,7 +138,9 @@ if clip.creator:
     print(f"Created By: {clip.creator.username}")
     print(f"Creator Category: {clip.category.name}")
 ```
+
 You can access the clips from a channel, including metadata like title, creator, and category.
+
 ```python
 from kickapi import KickAPI
 
@@ -128,7 +161,9 @@ for clip in channel.clips:
 ```
 
 ### Fetch Channel Leaderboards
+
 Display leaderboard data for a Kick channel, including top gifters of all time, this week, and this month.
+
 ```python
 from kickapi import KickAPI
 
@@ -158,7 +193,9 @@ for user in leaderboard.gifts_month:
 ```
 
 ### Fetch Chat Data
+
 The KickAPI package allows you to fetch chat data for a specific video, providing insights into the conversation history. The example code below demonstrates how to use KickAPI to retrieve and display chat messages.
+
 ```python
 from kickapi import KickAPI
 
@@ -177,7 +214,9 @@ for message in chat.messages:
 ```
 
 ### Fetch Live Chat Data
+
 To fetch live chat data and receive real-time updates on the ongoing conversation, you can continuously retrieve messages at intervals. The example code below demonstrates how to use KickAPI to fetch and display live chat messages.
+
 ```python
 from kickapi import KickAPI
 from datetime import datetime, timedelta
@@ -207,7 +246,9 @@ while True:
 ```
 
 ### Fetch and Save Avatar Image
+
 You can use the KickAPI to fetch a channel's avatar image and save it locally. Below is an example code snippet demonstrating how to achieve this:
+
 ```python
 from kickapi import KickAPI
 import requests
@@ -259,12 +300,15 @@ else:
   Monitor real-time chat activity in a livestream by continuously polling messages using the video's start time.
 
 ## Contributing
+
 We welcome contributions from the community! If you'd like to contribute to the development of KickApi, please follow these guidelines:
+
 - Fork the repository.
 - Create a new branch for your feature or bug fix.
 - Make your changes and ensure the code passes all tests.
 - Submit a pull request with a clear description of your changes.
 
 ## License
+
 This project is licensed under the MIT License - see the LICENSE file for details.
 Make sure to include a `LICENSE` file in your project's root directory and specify the licensing details in that file. The provided link in the "License" section should point to the actual `LICENSE` file in your project.

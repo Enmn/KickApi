@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "KickApi"
+version = "0.3.6"
+description = "A Python package for interacting with the Kick API to retrieve channel and video data."
+readme = "README.md"
+license = "MIT"
+authors = [{ name = "Enmn" }]
+requires-python = ">=3.8"
+keywords = [
+    "kick",
+    "api",
+    "kickapi",
+    "live streaming",
+    "kick.com",
+    "video api",
+    "streaming platform",
+    "python kick sdk",
+    "kick bot",
+    "kick integration",
+]
+dependencies = ["cloudscraper", "ua-generator"]
+
+classifiers = [
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+Homepage = "https://github.com/Enmn/KickApi"
+
+[tool.setuptools.packages.find]
+include = ["kickapi*"]
